@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import {Route, BrowserRouter as  Router, Routes} from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import {Toaster} from "react-hot-toast";
+import Unauthorized from "./pages/Unauthorized";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminDashboard from "./pages/AdminDashboard";
+import PatientDashboard from "./pages/PatientDashboard";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return(
+
+
+        <>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
+
+            <Router>
+                <Routes>
+                    <Route path={"/"} element={<Home/>} />
+                    <Route path={"/login"} element={<Login />} />
+
+
+                <Route path={"/unauthorized"} element={<Unauthorized />} />
+
+                <Route
+                    path="/admin/*"
+                    element={
+                        <ProtectedRoute allowedRoles={["Admin"]}>
+                            <AdminDashboard />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/patient/*"
+                    element={
+                        <ProtectedRoute allowedRoles={["User"]}>
+                            <PatientDashboard />
+                        </ProtectedRoute>
+                    }
+                />
+            </Routes>
+
+            </Router>
+        </>
+        
+    );
+
 }
 
 export default App;
