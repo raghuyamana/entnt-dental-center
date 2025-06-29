@@ -13,34 +13,22 @@ const PatientManagement = () => {
     }, []);
 
         const handleChange = (e) => {
-            setFormData({ ...formData, [e.target.name]: e.target.value });
-        };
-
-        if (
-            !formData.name.trim() ||
-            !formData.dob ||
-            !formData.contact.trim() ||
-            !formData.healthInfo.trim()
-        ) {
-            alert("Please fill in all patient fields.");
-            return;
+            setFormData({...formData, [e.target.name]: e.target.value});
         }
-
-        const payload = { ...formData };
-
-        if (editing) {
-            updatePatient(payload);
-        } else {
-            payload.id = Date.now().toString();
-            addPatient(payload);
-        }
-
-        setFormData(initialForm);
-        setEditing(false);
-        setPatients(getAllPatients());
 
         const handleSubmit = (e) => {
             e.preventDefault();
+
+            if (
+                !formData.name.trim() ||
+                !formData.dob ||
+                !formData.contact.trim() ||
+                !formData.healthInfo.trim()
+            ) {
+                alert("Please fill in all patient fields.");
+                return;
+            }
+
             if(editing){
                 updatePatient(formData);
             }else{
