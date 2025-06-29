@@ -1,15 +1,22 @@
 import {useAppContext} from "../context/AppContext";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Login = () => {
-    const {login} = useAppContext();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { user, login } = useAppContext();
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user?.role === "Admin") navigate("/admin");
+        if (user?.role === "Patient") navigate("/patient");
+    }, [user, navigate]);
+
 
     const handleLogin = (e) => {
         e.preventDefault();

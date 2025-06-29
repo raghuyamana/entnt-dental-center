@@ -18,15 +18,15 @@ export const AppProvider = ({children}) => {
     },[]);
 
     const login = (email, password) => {
-        const findUser = USERS.find(
+        const user = USERS.find(
             (u) => u.email === email && u.password === password
         );
-        if(findUser) {
-            setUser(findUser);
-            localStorage.setItem("currentUser", JSON.stringify(findUser));
-            return { success: true, user: findUser };
+        if (user) {
+            setUser(user);
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            return { success: true, user };
         }
-        return { success: false, message: "Invalid Credentials" };
+        return { success: false, message: "Invalid credentials" };
     };
 
     const logout = () => {
