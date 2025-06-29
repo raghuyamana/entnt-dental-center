@@ -1,9 +1,9 @@
+
 const DashboardView = () => {
-    return(
-        <div>
-            Dashboard
-        </div>
+    return( <>
+    </>
     )
 }
+
 
 export default DashboardView;

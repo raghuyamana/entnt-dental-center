@@ -137,13 +137,16 @@ const AppointmentManagement = () => {
                         onChange={handleChange}
                         className="border p-2 rounded"
                     />
-                    <input
+                    <select
                         name="status"
-                        placeholder="Status (Pending/Completed)"
                         value={formData.status}
                         onChange={handleChange}
                         className="border p-2 rounded"
-                    />
+                        >
+                        <option value="">Select Status</option>
+                        <option value='pending'>Pending</option>
+                        <option value='completed'>Completed</option>
+                    </select>
                     <input type="date"
                             name="nextDate"
                            value={formData.nextDate}
