@@ -8,25 +8,37 @@ const PatientManagement = () => {
     const [formData, setFormData] = useState(initialForm);
     const [editing, setEditing] = useState(false);
 
-    useEffect(() => {
-        setPatients(getAllPatients());
-    }, []);
+        useEffect(() => {
+            setPatients(getAllPatients());
+        }, []);
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+        const handleChange = (e) => {
+            setFormData({ ...formData, [e.target.name]: e.target.value });
+        };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if(editing){
-            updatePatient(formData);
-        }else{
-            addPatient({...formData, id:Date.now().toString()});
+        if (
+            !formData.name.trim() ||
+            !formData.dob ||
+            !formData.contact.trim() ||
+            !formData.healthInfo.trim()
+        ) {
+            alert("Please fill in all patient fields.");
+            return;
         }
+
+        const payload = { ...formData };
+
+        if (editing) {
+            updatePatient(payload);
+        } else {
+            payload.id = Date.now().toString();
+            addPatient(payload);
+        }
+
         setFormData(initialForm);
         setEditing(false);
         setPatients(getAllPatients());
-    };
+
 
     const handleEdit = (patient) => {
         setFormData(patient);

@@ -54,18 +54,30 @@ const AppointmentManagement = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const payload = {...formData}
+
+        if (
+            !formData.patientId ||
+            !formData.appointmentDate ||
+            !formData.title.trim() ||
+            !formData.description.trim()
+        ) {
+            alert("Please fill in required fields: Patient, Date, Title, Description.");
+            return;
+        }
+
+        const payload = { ...formData };
+
         if (editing) {
-            updateIncident(formData);
+            updateIncident(payload);
         } else {
             payload.id = Date.now().toString();
-            addIncident({...formData, id: Date.now().toString()});
+            addIncident(payload);
         }
+
         setFormData(initialForm);
         setEditing(false);
         setIncidents(getAllIncidents());
-
-    }
+    };
 
     const handleEdit = (incident) => {
         setFormData(incident);
