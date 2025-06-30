@@ -8,7 +8,6 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { user, login } = useAppContext();
-    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
@@ -32,7 +31,7 @@ const Login = () => {
             toast.error(result.message);
             setEmail("");
             setPassword("");
-            setError(result.message);
+
         }
     };
 
