@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# 🦷 ENTNT Dental Center Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a **React-based Admin + Patient dashboard** built for the ENTNT frontend assignment.
 
-## Available Scripts
+> 🔗 **Live App:** [https://entnt-dental-center.netlify.app](https://entnt-dental-center.netlify.app)  
+> 🗃️ **GitHub Repo:** [https://github.com/raghuyamana/entnt-dental-center](https://github.com/raghuyamana/entnt-dental-center)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📦 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React** (with functional components & hooks)
+- **TailwindCSS** for UI
+- **React Router** for routing
+- **Context API** for session management
+- **localStorage** to simulate backend
+- **Pure JavaScript validation** (no external libs)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 👤 Users
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ✅ **Admin**
+  - Email: `admin@entnt.in`
+  - Password: `admin123`
 
-### `npm run build`
+- ✅ **Patient**
+  - Email: `user@entnt.in`
+  - Password: `user123`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔐 Features by Role
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 👨‍⚕️ Admin Panel
 
-### `npm run eject`
+- 🧑 Patient Management (Add / Edit / Delete)
+- 📅 Appointment Management (Add incidents, upload files, treatments)
+- 📆 Calendar View (next 30 days)
+- 📊 Dashboard with KPIs:
+  - Next 10 appointments
+  - Top patients
+  - Pending / Completed status
+  - Total revenue
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 👤 Patient Dashboard
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- View own profile
+- See appointments & treatment details
+- Open uploaded files in new tab
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 💾 Data Handling
 
-## Learn More
+- Simulated backend using `localStorage`
+- File uploads stored as **Base64** (for preview & persistence)
+- Session stored in `localStorage`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ⚠️ Form Validation
 
-### Code Splitting
+- Mandatory fields enforced via `required` and JS validation
+- Error alerts for missing inputs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🚀 Deployment Instructions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Local Setup
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+git clone https://github.com/your-username/entnt-dental-center.git
+cd entnt-dental-center
+npm install
+npm start
