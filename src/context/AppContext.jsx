@@ -4,7 +4,7 @@ const AppContext = createContext();
 
 const USERS = [
     { id:"1", role:"Admin", email:"admin@entnt.in", password:"admin123"},
-    { id:"2", role:"User", email: "user@entnt.in", password:"user", patientId:"1751808518825"},
+    { id:"2", role:"User", email: "user@entnt.in", password:"user123", patientId:"1751808518825"},
 ];
 
 export const AppProvider = ({children}) => {
@@ -18,9 +18,15 @@ export const AppProvider = ({children}) => {
     },[]);
 
     const login = (email, password) => {
+        const cleanEmail = email.trim().toLowerCase();
+        const cleanPassword = password.trim();
+
         const user = USERS.find(
-            (u) => u.email === email && u.password === password
+            (u) =>
+                u.email.toLowerCase() === cleanEmail &&
+                u.password === cleanPassword
         );
+
         if (user) {
             setUser(user);
             localStorage.setItem("currentUser", JSON.stringify(user));
@@ -28,6 +34,7 @@ export const AppProvider = ({children}) => {
         }
         return { success: false, message: "Invalid credentials" };
     };
+
 
     const logout = () => {
         setUser(null);
