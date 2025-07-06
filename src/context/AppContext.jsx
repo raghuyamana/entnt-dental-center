@@ -21,11 +21,15 @@ export const AppProvider = ({children}) => {
         const cleanEmail = email.trim().toLowerCase();
         const cleanPassword = password.trim();
 
+        console.log("Login attempt:", cleanEmail, cleanPassword);
+
         const user = USERS.find(
             (u) =>
                 u.email.toLowerCase() === cleanEmail &&
                 u.password === cleanPassword
         );
+
+        console.log("Matched user:", user);
 
         if (user) {
             setUser(user);
@@ -34,6 +38,7 @@ export const AppProvider = ({children}) => {
         }
         return { success: false, message: "Invalid credentials" };
     };
+
 
 
     const logout = () => {
